@@ -1,0 +1,17 @@
+*.pyc
+locationsetting
+userID
+API.py
+LICENSE
+PyGeoCoder LICENSE
+.DS_Store
+__version__.py
+all_yaks-12-5-10PM-MoreNY.csv
+all_yaks-12-5-430AM.csv
+all_yaks-12-5-9PM.csv
+all_yaks-12-5-Noon.csv
+all_yaks.csv
+all_yaks_12-4-Noon.csv
+pygeocoder.py
+pygeolib.py
+validIDs
