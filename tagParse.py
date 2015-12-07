@@ -11,7 +11,7 @@ yakclient = MongoClient("mongodb://eecs395:395pw@ds027155.mongolab.com:27155/yak
 db = client['us8upoZa']
 yakdb = yakclient['yakscrape']
 yaktags = db.yaktags
-yaks = yakdb.yaks
+yaks = yakdb.yakfinal
 
 
 NY = ['Manhattan, NY', 'Bronx, NY', 'Queens, NY', 'Brooklyn, NY']
@@ -140,7 +140,6 @@ def barForTones(cursor):
 
 
 def createTopicTraces(locations):
-	allHours = range(0, 23)
 	data = []
 	for place in locations:
 		topicBins = dict.fromkeys(topicsList, 0)
@@ -154,16 +153,17 @@ def createTopicTraces(locations):
 		regionYaks = yaks.find({"region":place})
 		print('DB Cursor is {}'.format(regionYaks.count()))
 		for row in regionYaks:
-			topicForRow = yaktags.find_one({"message_id":row['message_id']})
-			if(topicForRow != None):
-				for attribute, value in topicForRow['topics'].items():
-					if(value == True):
-						topicBins[attribute] += 1
-		dictPrint(topicBins)
+			for attribute, value in row['topics'].items():
+				if(value == True):
+					topicBins[attribute] += 1
 
+		dictPrint(topicBins)
+		normalBins = normalize(topicBins, regionYaks.count(), allTopics)
+		dictPrint(normalBins)
+		
 		trace = go.Bar(
 			x = allTopics,
-			y = getVals(topicBins), 
+			y = getVals(normalBins), 
 			name=place,
 		    opacity=0.75
 		)
