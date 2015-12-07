@@ -160,7 +160,7 @@ def createTopicTraces(locations):
 		dictPrint(topicBins)
 		normalBins = normalize(topicBins, regionYaks.count(), allTopics)
 		dictPrint(normalBins)
-		
+
 		trace = go.Bar(
 			x = allTopics,
 			y = getVals(normalBins), 
@@ -176,7 +176,7 @@ def createTopicTraces(locations):
 	    	title='Topics',
 	    ),
 	    yaxis=dict(
-	        title='Number of Yaks'
+	        title='Percent of Yaks'
 	    ),
 	    barmode='group',
 	)
