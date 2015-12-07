@@ -1,0 +1,22 @@
+{
+  "name": "yakscrape",
+  "version": "1.0.0",
+  "description": "This repo contributes some code for scraping and storing Yik Yaks from multiple locations, analyzing, and storing these yaks uniquely in a MongoDB database. Just drop these files into the folder for https://github.com/djtech42/YikYakTerminal.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bomanimc/yakscrape.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bomanimc/yakscrape/issues"
+  },
+  "homepage": "https://github.com/bomanimc/yakscrape#readme",
+  "dependencies": {
+    "mongoose": "^4.2.9"
+  }
+}

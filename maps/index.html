@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+		<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+		<style>
+			#map { height: 700px; }
+		</style>
+        <script>
+            var ACCESS_TOKEN = 'pk.eyJ1IjoibWFwYm94IiwiYSI6IjZjNmRjNzk3ZmE2MTcwOTEwMGY0MzU3YjUzOWFmNWZhIn0.Y8bhBaUMqFiPrDRW9hieoQ';
+            var MB_ATTR = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+                '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery © <a href="http://mapbox.com">Mapbox</a>';
+            var MB_URL = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + ACCESS_TOKEN;
+            var OSM_URL = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+            var OSM_ATTRIB = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+        </script>
+        <script type="text/javascript" src="data.js"></script>
+        <script type="text/javascript" src="mapping.js"></script>
+	</head>
+    
+    
+	<body>
+        <div id="map"></div>
+        <div>
+            <button onclick="setLocationRegion('Manhattan, NY')">Manhattan</button>
+            <button onclick="setLocationRegion('Bronx, NY')">Bronx</button>
+            <button onclick="setLocationRegion('Queens, NY')">Queens</button>
+            <button onclick="setLocationRegion('Brooklyn, NY')">Brooklyn</button>
+        </div>
+	</body>
+    
+    <script type="text/javascript">
+        map = L.map('map').setView([40.6928, -73.9903 ] , 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        function onMapClick(e) {
+            alert("You clicked the map at " + e.latlng);
+        }
+
+//        map.on('click', onMapClick);
+    </script>
+</html>
