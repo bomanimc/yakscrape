@@ -154,10 +154,11 @@ def createTopicTraces(locations):
 		regionYaks = yaks.find({"region":place})
 		print('DB Cursor is {}'.format(regionYaks.count()))
 		for row in regionYaks:
-			topicForRow = yaktags.find({"message_id":row['message_id']}).limit(1);
-			for attribute, value in topicForRow['topics'].items():
-				if(value == True):
-					topicBins[attribute] += 1
+			topicForRow = yaktags.find_one({"message_id":row['message_id']})
+			if(topicForRow != None):
+				for attribute, value in topicForRow['topics'].items():
+					if(value == True):
+						topicBins[attribute] += 1
 		dictPrint(topicBins)
 
 		trace = go.Bar(
@@ -180,8 +181,8 @@ def createTopicTraces(locations):
 	    barmode='group',
 	)
 
-	# fig = go.Figure(data=data, layout=layout)
-	# plot_url = py.plot(fig, filename='tones-bar-allNY')
+	fig = go.Figure(data=data, layout=layout)
+	plot_url = py.plot(fig, filename='tones-bar-allNY')
 
 
 
