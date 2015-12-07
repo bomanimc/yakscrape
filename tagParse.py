@@ -182,12 +182,58 @@ def createTopicTraces(locations):
 	)
 
 	fig = go.Figure(data=data, layout=layout)
-	plot_url = py.plot(fig, filename='tones-bar-allNY')
+	plot_url = py.plot(fig, filename='topic-bar-allNY')
+
+def createToneTraces(locations):
+	data = []
+	for place in locations:
+		tonesBins = dict.fromkeys(tonesList, 0)
+		allTones = []
+		
+		dictPrint(tonesBins)
+		for attribute, value in tonesBins.items():
+			allTones.append(attribute)
+
+		print(place)
+		regionYaks = yaks.find({"region":place})
+		print('DB Cursor is {}'.format(regionYaks.count()))
+		for row in regionYaks:
+			for attribute, value in row['tones'].items():
+				if(value == True):
+					tonesBins[attribute] += 1
+
+		dictPrint(tonesBins)
+		normalBins = normalize(tonesBins, regionYaks.count(), allTones)
+		dictPrint(normalBins)
+
+		trace = go.Bar(
+			x = allTones,
+			y = getVals(normalBins), 
+			name=place,
+		    opacity=0.75
+		)
+		
+		data.append(trace)
+	
+	layout = go.Layout(
+		title='Yak Tones Across New York',
+	    xaxis=dict(
+	    	title='Tones',
+	    ),
+	    yaxis=dict(
+	        title='Percent of Yaks'
+	    ),
+	    barmode='group',
+	)
+
+	fig = go.Figure(data=data, layout=layout)
+	plot_url = py.plot(fig, filename='tones2-bar-allNY')
 
 
 
 #dbCursor = yaktags.find({})
 #barForTopics(dbCursor)
 #barForTones(dbCursor)
-createTopicTraces(NY)
+# createTopicTraces(NY)
+createToneTraces(NY)
 
