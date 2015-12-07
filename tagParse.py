@@ -162,7 +162,7 @@ def createTopicTraces(locations):
 		dictPrint(topicBins)
 
 		trace = go.Bar(
-			x = NY,
+			x = allTopics,
 			y = getVals(topicBins), 
 			name=place,
 		    opacity=0.75
