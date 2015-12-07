@@ -12,7 +12,7 @@ yaks = db.yaks
 NU = ['Northwestern University, Evanston, IL', 'Wilmette, IL', 'Skokie, IL', 'Rogers Park, IL']
 UChicago = ['University of Chicago', 'Hyde Park, IL', 'Southshore Park, IL']
 #Took out Kenwood from UChi
-Columbia = ['Manhattan, NY', 'Bronx, NY', 'North Bergen, NJ', 'Queens, NY', 'Brooklyn, NY']
+Columbia = ['Manhattan, NY', 'Bronx, NY', 'Queens, NY', 'Brooklyn, NY']
 Stanford = ['Stanford University', 'Los Altos, CA', 'Palo Alto, CA', 'Menlo Park, CA']
 JHU = ['John Hopkins University', 'Hampden, MD', 'Remington, MD', 'Waverly, MD'];
 Vanderbilt = ['Vanderbilt University', 'Green Hills, TN', 'East Nashville, TN', 'Berry Hill, TN']
